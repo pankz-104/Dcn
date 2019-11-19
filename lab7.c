@@ -13,8 +13,7 @@ void xor()
 
 void crc()
 {
-	for(e=0;e<N;e++)
-	cs[c] = cs[c+1];
+	for(e=0;e<N;e++) cs[e] = t[e];
 	do
 	{
 		if(cs[0] == '1')xor();
@@ -31,7 +30,7 @@ int main()
 	printf(" generating polynomial is: %s",g);
 	a = strlen(t);
 	for(e=1;e<a+N-1;e++) t[e]='0';
-	printf("\n modified t[n] is: %s",t);
+	printf("\n modified t[u] is: %s",t);
 	crc();
 	printf("\n checksum is : %s",cs);
 	for(e=a;e<a+N-1;e++) t[e]=cs[e-a];
@@ -46,11 +45,10 @@ int main()
 		printf("erronous data: %s\n",t);
 	}
 	crc();
-	for(e=0;(e<N-1)&&(cs[e]!='1');e++);
+	for(e=0;((e<N-1)&&(cs[e]!='1'));e++);
 	if(e<N-1) 
 		printf("error detected");
 	else 
 		printf("no error detected");
 	return 0;
 }
-
